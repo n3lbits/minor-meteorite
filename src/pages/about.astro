@@ -1,5 +1,29 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = 'About Me - Nelailen';
+
+const identity = {
+  firstName: 'Nicole',
+  country: 'USA',
+  occupation: 'Cybersecurity',
+  hobbies: ['photography', 'birdwatching', 'collecting', 'exploring'],
+};
+
+const interests = [
+  'bad weather',
+  'nonograms',
+  'finding old things',
+  'mechanical pencils',
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const interestColor = 'indigo';
+const fontWeight = 'bold';
+const textCase = 'uppercase';
 ---
 
 <html lang='en'>
@@ -8,7 +32,23 @@
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
-    <title>Nelainalen.</title>
+    <title>{pageTitle}</title>
+    <style define:vars={{ interestColor, fontWeight, textCase }}>
+      h1 {
+        color: magenta;
+        font-size: 3rem;
+      }
+
+      h2 {
+        color: lime;
+        font-size: 1.5rem;
+      }
+      .interest {
+        color: var(--interestColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href='/'>Home</a>
@@ -50,5 +90,35 @@
     </p>
 
     <h3>Here are a few notes about me:</h3>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>
+        I live in the {identity.country} and I work in {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            My hobbies include: {identity.hobbies[0]}, {identity.hobbies[1]} and{' '}
+            {identity.hobbies[3]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Some of my favorite things include:</p>
+    <ul>
+      {interests.map((interest) => <li class='interest'>{interest}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
   </body>
 </html>
