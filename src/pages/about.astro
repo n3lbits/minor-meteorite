@@ -1,5 +1,6 @@
 ---
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = 'About Me - Nelailen';
@@ -52,7 +53,7 @@ const textCase = 'uppercase';
     </style>
   </head>
   <body>
-    <Navigation />
+    <Header />
 
     <h1>A bit about me</h1>
     <h2>...and this site</h2>
@@ -119,5 +120,6 @@ const textCase = 'uppercase';
         <p>My goal is not 3 days.</p>
       )
     }
+    <Footer />
   </body>
 </html>

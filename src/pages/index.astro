@@ -1,5 +1,6 @@
 ---
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = 'Nelailen';
@@ -14,7 +15,7 @@ const pageTitle = 'Nelailen';
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
     <h1>Hi! Hello!</h1>
     <p>
       Welcome to the personal website of Nelailen, where I do whatever I like...
@@ -33,5 +34,6 @@ const pageTitle = 'Nelailen';
       <li>Walk-throughs and tutorials of personal projects and activities.</li>
       <li>Kindness.</li>
     </ul>
+    <Footer />
   </body>
 </html>
