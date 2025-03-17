@@ -1,5 +1,20 @@
-:root {
 
+:root[data-theme="light"] {
+    --text: #0e0b1e;
+    --background: #f2f0fa;
+    --primary: #362970;
+    --secondary: #cd87d4;
+    --accent: #a53b8e;
+  }
+:root[data-theme="dark"] {
+    --text: #e4e1f4;
+    --background: #07050f;
+    --primary: #9d90d7;
+    --secondary: #712b77;
+    --accent: #c45cad;
+  }
+  
+:root {
   /* Palettes - Experimental */
 
   /* 1-Wondrus-Hole */
