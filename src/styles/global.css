@@ -1,3 +1,47 @@
+:root {
+
+  /* Palettes - Experimental */
+
+  /* 1-Wondrus-Hole */
+--purple-illusion: #bcbaf5;
+--wondrous-wisteria: #a5b1ff;
+--twinkle-night: #65689b;
+--midnight-velvet: #2b2742;
+--black: #010001;
+
+/* 2-Ravens-Pink */
+--diva-mecha: #f09ced;
+--avant-garde-pink: #ff7bf0;
+--vicious-violet: #974995;
+--purple-void: #3a1b43;
+--raven’s-coat: #000003;
+--black-hole: #000002;
+
+/* 3-Fuschia-Depths */
+--fuchsia-fever: hsl(337.11,90.48%,67.06%);
+--vivid-raspberry: hsl(337.53,100%,53.92%);
+--plum-perfect: hsl(333.93,78.38%,36.27%);
+--dark-sanctuary: hsl(321.97,74.74%,18.63%);
+--mysterious-depths: hsl(270,100%,5.88%);
+--obsidian-shard: hsl(263.48,100%,4.51%);
+
+/* 4-Mussie-Green */
+
+--moonscape: #7d6b76;
+--tussie-mussie: #e5c0d6;
+--homeopathic-blue: #dae2de;
+--seafoam-splashes: #a6f1cd;
+--a-state-of-mint: #79f8c1;
+--mint-o-licious: #a5ecca;
+
+/* 5-Purple-Punk */
+--voldemort: #311267;
+--space-battle-blue: #51129f;
+--purple-ink: #9634ac;
+--kinky-pinky: #d458b9;
+--pink-punk: #e38cc3;
+}
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
