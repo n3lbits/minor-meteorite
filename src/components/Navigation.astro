@@ -1,9 +1,19 @@
 ---
+import { NAVIGATION } from '../constants/navigation';
+const pathname = new URL(Astro.request.url).pathname;
 
+const isActive = (path: string) => {
+  if (path === '/') return pathname === '/';
+  return pathname.startsWith(path);
+};
 ---
 
-<div class='nav-links'>
-  <a href='/'>Home</a>
-  <a href='/about'>About</a>
-  <a href='/blog'>Blog</a>
-</div>
+<nav class='nav-links'>
+  {
+    NAVIGATION.map(({ name, path }) => (
+      <a href={path} class={isActive(path) ? 'active' : ''}>
+        {name}
+      </a>
+    ))
+  }
+</nav>

@@ -1,0 +1,11 @@
+---
+const { title, url } = Astro.props;
+---
+
+<li class='post-archive'><a href={url}>{title}</a></li>
+
+<style>
+  .post-archive {
+    margin-top: 1rem;
+  }
+</style>
