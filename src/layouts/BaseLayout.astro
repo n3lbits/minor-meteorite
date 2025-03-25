@@ -1,11 +1,24 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Sidebar from '../components/structure/SideBar.astro';
+import type { MenuItem } from '../data/sidebarMenu';
+import BackToTop from '$components/BackToTop.astro';
 import '../styles/global.css';
 // Supports weights 300-900
 import '@fontsource-variable/rubik';
+// Supports weights 100-700
+import '@fontsource-variable/anuphan';
 
-const { pageTitle } = Astro.props;
+const { pageTitle, description, navItems } = Astro.props;
+interface Props {
+  pageTitle?: string;
+  description?: string | undefined;
+  navItems?: MenuItem[];
+  preloadCatalogue?: boolean;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang='en'>
@@ -14,14 +27,34 @@ const { pageTitle } = Astro.props;
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content={description ? description : 'My personal website'}
+    />
+    <meta property='og:title' content={pageTitle ? pageTitle : 'nelailen'} />
+    <meta
+      property='og:description'
+      content={description ? description : 'My personal website'}
+    />
+
     <title>{pageTitle}</title>
+    <link rel='canonical' href={canonicalURL} />
+    <meta property='og:url' content={canonicalURL} />
   </head>
   <body>
-    <Header />
-    <slot />
-    <Footer />
-    <script>
-      import '../scripts/menu.js';
-    </script>
+    <div class='main-wrapper'>
+      <Sidebar navMenu={navItems ?? []} />
+
+      <main class='content-wrapper'>
+        <Header />
+        <slot />
+        <Footer />
+        <BackToTop />
+      </main>
+
+      <script>
+        import '../scripts/menu.js';
+      </script>
+    </div>
   </body>
 </html>

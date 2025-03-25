@@ -1,0 +1,188 @@
+---
+import BreadCrumbs from '../../components/BreadCrumbs.astro';
+import Social from '../../components/Social.astro';
+import {
+  headerMenu as mainMenu,
+  processNavMenu,
+  type MenuItem,
+} from '$data/sidebarMenu';
+import DarkModeToggle from '../DarkModeToggle.astro';
+
+interface Props {
+  navMenu: MenuItem[];
+  currentPath: string;
+  currentName?: string | undefined;
+  routes: string[];
+}
+
+const { navMenu } = Astro.props;
+const processedNavMenu = processNavMenu(navMenu);
+const { currentPath, currentName = undefined, routes } = Astro.props;
+---
+
+<aside class='side-nav'>
+  <BreadCrumbs
+    currentPath={currentPath}
+    currentName={currentName}
+    position='left'
+    routes={routes}
+  />
+  <section class='nav-header'>
+    <section>
+      <section class='nav-logo'>
+        <h1 class='site-title'>
+          <a class='title' href='/'>nelailen.</a>
+        </h1>
+        <DarkModeToggle />
+      </section>
+      <nav class='main-menu'>
+        {
+          mainMenu.map((item) => (
+            <a class='menu-items' href={`/${item.toLowerCase()}/`}>
+              {item}
+            </a>
+          ))
+        }
+      </nav>
+    </section>
+
+    <nav class='internal-nav'>
+      {
+        processedNavMenu.flatMap((navItem) => (
+          <ul class='nav-items'>
+            <h3 class='nav-heading'>{navItem.heading}</h3>
+            {navItem.children.map((child) => (
+              <li>
+                <a href={child.link}>{child.label}</a>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </nav>
+    <Social />
+  </section>
+</aside>
+
+<style>
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    margin-block: 2rem;
+    height: 100vh;
+    border-right-width: 1px;
+    border-right-color: rgba(240, 248, 255, 0.555);
+    border-right-style: dashed;
+    padding: 0.5rem;
+    width: 16rem;
+  }
+  .nav-header {
+    position: sticky;
+    top: 1rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .site-title {
+    display: inline-block;
+    line-height: 2rem;
+    margin: 0;
+  }
+  .title {
+    display: block;
+    text-decoration: none;
+    color: var(--rp-text);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-shadow:
+      2px 2px 0 var(--space-battle-blue),
+      -2px -2px var(--purple-ink);
+    transition: all 500ms;
+  }
+  .title:hover,
+  .title:focus {
+    text-shadow:
+      6px 6px 0 var(--space-battle-blue),
+      -4px -4px var(--purple-ink);
+    transition: all 500ms;
+
+    transform-origin: bottom right;
+
+    &:active {
+      outline-style: dashed;
+      outline-offset: 3px;
+      outline-width: 1px;
+      outline-color: var(--purple-illusion);
+      transition: all 300ms;
+    }
+
+    .title:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  .theme-toggle {
+    display: flex;
+    height: 24px;
+    user-select: none;
+  }
+  .theme-toggle:hover,
+  .theme-toggle:focus {
+    color: blueviolet;
+  }
+  .main-menu {
+    display: flex;
+    column-gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 0.75rem;
+    border-bottom: dashed 2px var(--wc-1);
+  }
+  a.menu-items {
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all;
+    transition-duration: 0.3s;
+    font-size: 1rem;
+  }
+  a.menu-items:hover,
+  a.menu-items:focus {
+    transition: all;
+    transition-duration: 0.3s;
+    color: #955cf1;
+    filter: saturate(1);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--rp-text);
+    text-underline-offset: 2px;
+  }
+
+  a.menu-items:active {
+    outline-style: dashed;
+    outline-offset: 3px;
+    outline-width: 1px;
+    transition: all 300ms;
+  }
+  .internal-nav {
+    display: block;
+  }
+  ul.nav-items {
+    list-style-type: none;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+  h3.nav-heading {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+</style>

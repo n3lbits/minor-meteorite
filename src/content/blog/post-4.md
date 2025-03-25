@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 pubDate: 2025-15-03
 title: My Fourth Blog Post
 description: "This post will show up on its own!"

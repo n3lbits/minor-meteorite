@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { randomArrayEntry } from '$utils';
 
 export default function Greeting({messages}) {
 

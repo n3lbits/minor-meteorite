@@ -1,0 +1,86 @@
+:root {
+/* clouds */
+/* CSS HSL */
+--african-violet: hsla(261, 28%, 67%, 1);
+--cool-gray: hsla(243, 27%, 72%, 1);
+--thistle: hsla(315, 43%, 85%, 1);
+--african-violet-2: hsla(262, 28%, 61%, 1);
+--cool-gray-2: hsla(249, 28%, 65%, 1);
+--periwinkle: hsla(258, 49%, 81%, 1);
+--jordy-blue: hsla(215, 53%, 73%, 1);
+--lavender-pink: hsla(321, 75%, 83%, 1);
+--lavender-pink-2: hsla(321, 80%, 82%, 1);
+
+/* bubbles */
+/* CSS HSL */
+--dark-purple: hsla(295, 25%, 10%, 1);
+--dark-purple-2: hsla(262, 43%, 14%, 1);
+--french-rose: hsla(335, 82%, 60%, 1);
+--ultra-violet: hsla(273, 28%, 43%, 1);
+--oxford-blue: hsla(243, 47%, 10%, 1);
+--black: hsla(266, 78%, 4%, 1);
+--federal-blue: hsla(247, 60%, 25%, 1);
+--penn-blue: hsla(240, 56%, 18%, 1);
+--lavender-pink-3: hsla(330, 57%, 79%, 1);
+
+/* mountain */
+/* CSS HEX */
+--dark-purple-3: #17142Fff;
+--blush: #C56489ff;
+--plum: #834F81ff;
+--dark-purple-5: #1B102Cff;
+--amaranth-pink: #E49CC3ff;
+--dark-purple-4: #30203Aff;
+
+/* purple-mountains */
+/* CSS HSL */
+--russian-violet: hsla(264, 57%, 13%, 1);
+--lavender-floral: hsla(265, 65%, 71%, 1);
+--amethyst: hsla(264, 71%, 63%, 1);
+--dark-purple-6: hsla(264, 44%, 11%, 1);
+--persian-indigo: hsla(264, 56%, 27%, 1);
+--dark-purple-7: hsla(264, 58%, 10%, 1);
+--ultra-violet-2: hsla(265, 30%, 45%, 1);
+
+/* lone-tree */
+/* CSS HEX */
+--federal-blue-2: #200D57ff;
+--rebecca-purple: #6335A2ff;
+--tekhelet: #471D9Bff;
+--slate-blue: #704FC2ff;
+--persian-indigo-2: #3D198Fff;
+--persian-indigo-3: #31156Bff;
+--plum-2: #9A2B85ff;
+--rebecca-purple-2: #5A2FA1ff;
+--slate-blue-2: #7756D3ff;
+--eminence: #7C2E8Dff;
+
+/* cave */
+/* CSS HEX */
+--dark-purple-8: #2B213Aff;
+--english-violet: #5A3C57ff;
+--rose-taupe: #966775ff;
+--mountbatten-pink: #AA7489ff;
+--dark-purple-9: #372740ff;
+--eggplant: #73405Fff;
+
+/* pixel */
+/* CSS HEX */
+--dark-purple-10: #3C284Bff;
+--blush-2: #C76F7Fff;
+--raisin-black: #201A24ff;
+--dark-purple-11: #261424ff;
+--space-cadet: #383249ff;
+--quin-magenta: #875065ff;
+--raisin-black-2: #302835ff;
+--carolina-blue: #82AAC3ff;
+--paynes-gray: #58688Cff;
+
+/* cave-pool */
+--lightest: #abbcda;
+--clear-aqua: #66cccc;
+--mid-grey: #424153;
+--blackish: #050408;
+--stone: #999999;
+
+}

@@ -9,10 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdoc": "^0.13.1",
+    "@astrojs/mdx": "^4.2.1",
     "@astrojs/preact": "^4.0.5",
     "@astrojs/rss": "^4.0.11",
+    "@fontsource-variable/anuphan": "^5.2.5",
     "@fontsource-variable/rubik": "^5.2.5",
-    "astro": "^5.5.2",
+    "astro": "^5.5.3",
+    "path": "^0.12.7",
     "preact": "^10.26.4"
   }
 }

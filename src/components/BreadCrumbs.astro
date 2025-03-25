@@ -1,0 +1,56 @@
+---
+import Breadcrumb from '../components/atoms/Breadcrumb.astro';
+interface Props {
+  currentPath: string;
+  currentName?: string | undefined;
+  position: 'left' | 'main';
+  routes: string[];
+}
+
+const { currentPath, currentName = undefined, position } = Astro.props;
+
+type Path = {
+  href: string;
+  path: string;
+  name?: string;
+};
+
+const wrapClass =
+  position === 'left' ? 'mt-2 flex gap-4' : 'ml-1 md:ml-2 flex gap-2 pr-4';
+
+const rootPath = Astro.site?.pathname ?? '/';
+
+const paths: Path[] = [
+  {
+    href: rootPath,
+    path: 'nelailen',
+  },
+];
+
+if (currentName) {
+  const lastPath = paths.at(-1);
+  if (lastPath) {
+    lastPath.name = currentName;
+  }
+}
+---
+
+<div class='breadcrumb-wrapper'>
+  <div class='breadcrumb-base'>
+    <span aria-hidden='true' class='font-bold'>.HELLOOOO</span>
+    <div class='breadcrumb-items'>
+      <div class={wrapClass}>
+        {
+          paths.map((path) => (
+            <Breadcrumb
+              currentPath={currentPath}
+              href={path.href}
+              path={path.path}
+              name={path.name}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
