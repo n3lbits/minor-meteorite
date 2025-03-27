@@ -1,0 +1,30 @@
+---
+import type { NavigationItem } from '../../types/navigation';
+import { isAbsolute } from '../../utils';
+import type { JSX } from 'astro/jsx-runtime';
+
+export interface Props {
+  item: NavigationItem;
+  isActive?: boolean;
+  role?: JSX.AriaRole;
+}
+
+const {
+  isActive = false,
+  item: { path, name },
+  role,
+} = Astro.props;
+---
+
+<a
+  href={path}
+  class={`flex items-center gap-1 whitespace-nowrap ${
+    isActive ? 'text-accent/100' : 'clickable'
+  }`}
+  target={isAbsolute(path) ? '_blank' : '_self'}
+  {role}
+>
+  <span class={isActive ? `underline` : ''}>
+    {name}
+  </span>
+</a>

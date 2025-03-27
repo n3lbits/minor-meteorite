@@ -83,4 +83,21 @@
 --blackish: #050408;
 --stone: #999999;
 
+/* Scented Moonscape */
+--moonscape: #7c676c;
+--pink-tiles: #e1b9c2;
+--pink-accent: #f6cfe0;
+--spring: #f1d2ec;
+--taffy: #ebd5f4;
+--champagne: #e0d7eb;
+
+/* purple-mauve */
+--moonscape-1: #7c6771;
+--purple-poodle: #dcb7cb;
+--grape-taffy: #f2d5e8;
+--minute-mauve: #f2e3f2;
+--greek-goddess: #efebf5;
+--forgotten-mosque: #e5dbde;
+
+--box-shadow: 0px 0px 5px 1px rgba(194, 110, 189, 0.36);
 }

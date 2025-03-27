@@ -64,11 +64,14 @@
   --rp-dawn-highlight-med: #dfdad9;
   --rp-dawn-highlight-high: #cecacd;
 
+  --menu-accent: #955cf1;
+  --menu-active: var(--vicious);
+
   /* Other Palettes - Experimental */
 
   /* 1-Wondrus-Hole */
 --purple-illusion: #bcbaf5;
---wondrous-wisteria: #a5b1ff;
+--wisteria: #c1c9fd;
 --twinkle-night: #65689b;
 --midnight-velvet: #2b2742;
 --black: #010001;
@@ -76,13 +79,13 @@
 /* 2-Ravens-Pink */
 --diva-mecha: #f09ced;
 --avant-garde-pink: #ff7bf0;
---vicious-violet: #974995;
+--vicious: #974995;
 --purple-void: #3a1b43;
 --ravens-coat: #000003;
 --black-hole: #000002;
 
 /* 3-Fuschia-Depths */
---fuchsia-fever: hsl(337.11,90.48%,67.06%);
+--fuchsiaf: hsl(337.11,90.48%,67.06%);
 --vivid-raspberry: hsl(337.53,100%,53.92%);
 --plum-perfect: hsl(333.93,78.38%,36.27%);
 --dark-sanctuary: hsl(321.97,74.74%,18.63%);
@@ -92,7 +95,7 @@
 /* 4-Mussie-Green */
 
 --moonscape: #bbadcc69;
---tussie-mussie: #e5c0d6;
+--tussie: #e5c0d6;
 --homeopathic-blue: #dae2de;
 --seafoam-splashes: #a6f1cd;
 --a-state-of-mint: #79f8c1;
@@ -105,11 +108,24 @@
 --kinky-pinky: #d458b9;
 --pink-punk: #e38cc3;
 
+/* purple-mountains */
+/* CSS HSL */
+--russian-violet: hsla(264, 57%, 13%, 1);
+--lav-floral: rgb(187, 149, 240);
+--amethyst: hsla(264, 71%, 63%, 1);
+--dark-purple-6: hsla(264, 44%, 11%, 1);
+--persian-indigo: hsla(264, 56%, 27%, 1);
+--dark-purple-7: hsla(264, 58%, 10%, 1);
+--ultra-violet-2: hsla(265, 30%, 45%, 1);
+--purple-poodle: #d2a4f8;
+
 --wc-1: #9b5fe0;
 
 --bg-overlay: linear-gradient(135deg, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
 --main-bg: #1d1b1f;
 --list-style: content: "\009B";
+--box-shadow: 0px 0px 5px 1px rgba(194, 110, 189, 0.36);
+--font-mono: "Hack";
 }
 
 @font-face {
@@ -160,13 +176,11 @@ html.dark {
 }
 
 body {
-  position: relative;
   margin: 0;
   width: 100%;
   line-height: 1.5;
-  min-height: 100svh;
+  height: 100%;
   font-family: 'Rubik Variable', sans-serif;
-  margin-left: calc(100vw - 100%);
 }
 
 a {
@@ -189,12 +203,21 @@ a:is(.dark *) {
 } */
 .main-wrapper {
   display: grid;
-  position: relative;
-  z-index: 10;
-  margin-inline: 2rem;
-  max-width: 100%;
-  grid-template-columns: 18rem 1fr 20rem;
+  width: min(1280px,100%);
   min-height: 100%;
+  padding: 1.25rem;
+}
+
+@media screen and (min-width: 640px) {
+.main-wrapper { 
+  display: grid;
+  position: relative;
+  padding: 0;
+  column-gap: 1.5rem;
+  z-index: 10;
+  width: min(1280px,100%);
+  grid-template-columns: minmax(0,1.25fr) minmax(0,3.25fr);
+}
 }
 
 .content-wrapper {
@@ -260,7 +283,7 @@ h2 {
     -2px -2px var(--purple-ink);
     transition: all 500ms;
 }
-a.active {
+.nav-links a.active {
   color: var(--rp-moon-text);
   text-shadow:
   6px 6px 0 var(--space-battle-blue),
@@ -269,7 +292,7 @@ a.active {
 }
 .nav-links a:hover,
 .nav-links a:focus {
-  color: var(rp-moon-text);
+  color: var--(rp-moon-text);
   text-shadow:
   6px 6px 0 var(--space-battle-blue),
   -4px -4px var(--purple-ink);
@@ -294,13 +317,59 @@ a.active {
 .nav-links a:focus {
   background-color: #ff9776;
 } */
+.main-menu {
+  display: flex;
+  column-gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 0.75rem;
+  border-bottom: dashed 2px var(--wc-1);
+}
+.main-menu a {
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all;
+  transition-duration: 0.3s;
+  font-size: 1rem;
+}
+.main-menu a.active {
+  color: var(--rp-moon-iris);
+  filter: saturate(2);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rp-text);
+  text-underline-offset: 3px;
+}
+.main-menu a:hover,
+.main-menu a:focus {
+  transition: all;
+  transition-duration: 0.3s;
+  color: #955cf1;
+  filter: saturate(1);
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rp-text);
+  text-underline-offset: 2px;
+
+&:active {
+  outline-style: dashed;
+  outline-offset: 3px;
+  outline-width: 1px;
+  outline-color: var(--purple-illusion);
+  transition: all 300ms;
+  transition-duration: .3s;
+}
+}
 
 
 .expanded {
   display: unset;
 }
 
-@media screen and (min-width: 636px) {
+@media screen and (min-width: 640px) {
   .nav-links {
     margin-left: 5em;
     display: block;

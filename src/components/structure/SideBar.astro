@@ -1,85 +1,100 @@
 ---
 import BreadCrumbs from '../../components/BreadCrumbs.astro';
 import Social from '../../components/Social.astro';
-import {
-  headerMenu as mainMenu,
-  processNavMenu,
-  type MenuItem,
-} from '$data/sidebarMenu';
-import DarkModeToggle from '../DarkModeToggle.astro';
+import SideNav from '../../components/SideNav.astro';
 
 interface Props {
-  navMenu: MenuItem[];
+  activeName: string;
   currentPath: string;
   currentName?: string | undefined;
   routes: string[];
 }
 
-const { navMenu } = Astro.props;
-const processedNavMenu = processNavMenu(navMenu);
 const { currentPath, currentName = undefined, routes } = Astro.props;
 ---
 
-<aside class='side-nav'>
+<aside class='side-bar'>
   <BreadCrumbs
     currentPath={currentPath}
     currentName={currentName}
     position='left'
     routes={routes}
   />
-  <section class='nav-header'>
-    <section>
-      <section class='nav-logo'>
-        <h1 class='site-title'>
-          <a class='title' href='/'>nelailen.</a>
-        </h1>
-        <DarkModeToggle />
+  <div class='nav-wrapper'>
+    <section class='nav-header'>
+      <section>
+        <section class='nav-logo'>
+          <h1 class='site-title'>
+            <a class='title' href='/'>nelailen.</a>
+          </h1>
+        </section>
+        <SideNav />
       </section>
-      <nav class='main-menu'>
-        {
-          mainMenu.map((item) => (
-            <a class='menu-items' href={`/${item.toLowerCase()}/`}>
-              {item}
-            </a>
+
+      <nav class='internal-nav'>
+        <!-- {
+          processedNavMenu.flatMap((navItem) => (
+            <ul class='nav-items'>
+              <h3 class='nav-heading'>{navItem.heading}</h3>
+              {navItem.children.map((child) => (
+                <li>
+                  <a href={child.link}>{child.label}</a>
+                </li>
+              ))}
+            </ul>
           ))
-        }
+        } -->
       </nav>
+      <Social />
     </section>
-
-    <nav class='internal-nav'>
-      {
-        processedNavMenu.flatMap((navItem) => (
-          <ul class='nav-items'>
-            <h3 class='nav-heading'>{navItem.heading}</h3>
-            {navItem.children.map((child) => (
-              <li>
-                <a href={child.link}>{child.label}</a>
-              </li>
-            ))}
-          </ul>
-        ))
-      }
-    </nav>
-    <Social />
-  </section>
+  </div>
 </aside>
-
 <style>
-  .side-nav {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.95rem;
+  .side-bar {
+    top: 0;
+    display: none;
     margin-block: 2rem;
-    height: 100vh;
-    border-right-width: 1px;
-    border-right-color: rgba(240, 248, 255, 0.555);
-    border-right-style: dashed;
+    margin-left: 1rem;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    transition-duration: 0.1s;
+  }
+
+  @media screen and (min-width: 640px) {
+    .side-bar {
+      display: flex;
+      height: 100vh;
+      top: 0;
+      margin-left: 0rem;
+      border-right-width: 1px;
+      border-right-color: rgba(240, 248, 255, 0.555);
+      border-right-style: dashed;
+      transition-property: opacity;
+      transition-timing-function: linear;
+      transition-duration: 0.1s;
+    }
+  }
+  .nav-wrapper {
+    margin-left: 1rem;
+    font-size: 0.95rem;
     padding: 0.5rem;
-    width: 16rem;
+    max-height: 100svh;
+  }
+
+  @media screen and (min-width: 640px) {
+    .nav-wrapper {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: auto;
+      font-size: 1.2rem;
+      margin-inline: 1rem;
+      position: sticky;
+      top: 4rem;
+    }
   }
   .nav-header {
     position: sticky;
-    top: 1rem;
+    top: 4rem;
   }
 
   .nav-logo {
@@ -127,15 +142,7 @@ const { currentPath, currentName = undefined, routes } = Astro.props;
       transform-origin: bottom left;
     }
   }
-  .theme-toggle {
-    display: flex;
-    height: 24px;
-    user-select: none;
-  }
-  .theme-toggle:hover,
-  .theme-toggle:focus {
-    color: blueviolet;
-  }
+
   .main-menu {
     display: flex;
     column-gap: 0.75rem;
@@ -144,7 +151,7 @@ const { currentPath, currentName = undefined, routes } = Astro.props;
     padding-bottom: 0.75rem;
     border-bottom: dashed 2px var(--wc-1);
   }
-  a.menu-items {
+  .main-menu a {
     display: block;
     text-decoration: none;
     font-weight: 500;
@@ -152,8 +159,10 @@ const { currentPath, currentName = undefined, routes } = Astro.props;
     transition-duration: 0.3s;
     font-size: 1rem;
   }
-  a.menu-items:hover,
-  a.menu-items:focus {
+  .main-menu a.active {
+  }
+  .main-menu a:hover,
+  .main-menu a:focus {
     transition: all;
     transition-duration: 0.3s;
     color: #955cf1;
@@ -165,12 +174,13 @@ const { currentPath, currentName = undefined, routes } = Astro.props;
     text-underline-offset: 2px;
   }
 
-  a.menu-items:active {
+  .main-menu a:active {
     outline-style: dashed;
     outline-offset: 3px;
     outline-width: 1px;
     transition: all 300ms;
   }
+
   .internal-nav {
     display: block;
   }

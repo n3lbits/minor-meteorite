@@ -16,5 +16,13 @@ export const NAVIGATION: Navigation = [
         name: "tags",
         path: "/tags",
     },
+    {
+      name: 'etc',
+      path: '/#',
+    },
+    { name: 'projects',
+      path: '/etc/projects'
 
-]; 
+    },
+
+      ] 

@@ -39,15 +39,18 @@ const { post } = Astro.props;
     display: flex;
     flex-direction: column;
     outline: dashed;
-    outline-width: 2px;
-    outline-offset: 5px;
+    outline-width: 1px;
+    outline-offset: -1px;
     outline-color: var(--moonscape);
+    transition: all 500ms;
   }
   .post-preview:hover,
   .post-preview:focus {
     background-color: hsla(266, 98%, 50%, 0.041);
     z-index: 100;
     font-weight: bolder;
+    transition: all 500ms;
+    box-shadow: var(--box-shadow);
   }
 
   h4 {

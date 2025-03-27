@@ -1,8 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Sidebar from '../components/structure/SideBar.astro';
-import type { MenuItem } from '../data/sidebarMenu';
+import SideBar from '../components/structure/SideBar.astro';
 import BackToTop from '$components/BackToTop.astro';
 import '../styles/global.css';
 // Supports weights 300-900
@@ -10,14 +9,12 @@ import '@fontsource-variable/rubik';
 // Supports weights 100-700
 import '@fontsource-variable/anuphan';
 
-const { pageTitle, description, navItems } = Astro.props;
 interface Props {
   pageTitle?: string;
   description?: string | undefined;
-  navItems?: MenuItem[];
-  preloadCatalogue?: boolean;
 }
 
+const { pageTitle, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -27,9 +24,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
+    <title>{pageTitle ? `${pageTitle} - nelailen` : 'nelailen'}</title>
     <meta
       name='description'
       content={description ? description : 'My personal website'}
+    />
+    <meta name='theme-color' content='#F50062' />
+    <meta
+      name='theme-color'
+      content='#F50062'
+      media='(prefers-color-scheme: dark)'
     />
     <meta property='og:title' content={pageTitle ? pageTitle : 'nelailen'} />
     <meta
@@ -40,10 +44,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{pageTitle}</title>
     <link rel='canonical' href={canonicalURL} />
     <meta property='og:url' content={canonicalURL} />
+    <script src='../assets/scripts/main.ts'></script>
   </head>
   <body>
     <div class='main-wrapper'>
-      <Sidebar navMenu={navItems ?? []} />
+      <SideBar />
 
       <main class='content-wrapper'>
         <Header />
@@ -54,6 +59,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       <script>
         import '../scripts/menu.js';
+      </script>
+      <script is:inline>
+        const theme = localStorage.getItem('theme'),
+          isSystemDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+        theme === 'dark' || (!theme && isSystemDark)
+          ? document.documentElement.classList.add('dark')
+          : theme === 'light'
+            ? document.documentElement.classList.remove('dark')
+            : theme === 'system' &&
+              isSystemDark &&
+              document.documentElement.classList.add('dark');
       </script>
     </div>
   </body>

@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Preview from '$components/Preview.astro';
+import { blogFilter } from '$utils';
+import { getCollection } from 'astro:content';
+import { randomArrayEntry } from '$utils';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => {
+    return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+  })
+  .filter(blogFilter)
+  .slice(0, 3);
+const pageTitle = 'Nelailen';
+const greating = randomArrayEntry([
+  'Hi',
+  'Hello',
+  'Howdy',
+  'Hey there',
+  'Hej',
+  'Hallo',
+  'Hola',
+  'Habari',
+]);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{greating}...</h1>
+  <section>
+    <h2>Hi, Hello and welcome!</h2>
+    <p class='intro-sub'>
+      Welcome to the personal website of Nelailen, where I do whatever I like...
+      If you'd like to read a little bit about who I am and all, go <a
+        href='/about/'>here</a
+      >.
+    </p>
+  </section>
+
+  <section class='content'>
+    <article class='intro'>
+      <h3>About this site:</h3>
+      <p>Here are some things that you can expect to find here:</p>
+      <ul>
+        <li>Changing designs and "features" that seem out of place.</li>
+        <li>
+          Throwbacks as I reminisce over the old web, where personal websites
+          were common.
+        </li>
+        <li>Posts about a variety of things. I am a collector of hobbies.</li>
+        <li>
+          Occasional write-ups and walk-throughs of CTFs, TryHackMe, and others.
+        </li>
+        <li>
+          Walk-throughs and tutorials of personal projects and activities.
+        </li>
+        <li>Kindness.</li>
+      </ul>
+    </article>
+    <section class='list-container'>
+      <h3>Latest blog posts</h3>
+      {posts.map((post) => <Preview post={post} />)}
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  .intro {
+    outline: dashed;
+    outline-color: var(--moonscape);
+    outline-width: 1px;
+    outline-offset: 5px;
+    padding-block: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .intro-sub {
+    margin-bottom: 0.5rem;
+  }
+  .intro p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
+  .intro ul {
+    padding-inline: 1rem;
+  }
+
+  .intro ul li {
+    list-style: none;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .intro ul li::marker {
+    content: '\2023\0020 ';
+    font-size: 1.2rem;
+    color: var(--moonscape);
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5;
+    margin-block: 0.5rem;
+    padding-block: 0.5rem;
+  }
+
+  h3 {
+    margin-top: 0rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    font-family: 'Anuphan Variable', 'Segoe UI', Tahoma, Geneva, Verdana,
+      sans-serif;
+    color: var(--purple-ink);
+  }
+</style>

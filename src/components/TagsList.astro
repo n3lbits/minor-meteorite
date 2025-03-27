@@ -1,29 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 const allPosts = await getCollection('blog');
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
-const pageTitle = 'All Tags';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <div class='tags'>
-    <ul class='tags-list'>
-      {
-        tags.map((tag) => (
-          <li class='tag-name'>
-            <a href={`/tags/#${tag}`}>#{tag}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</BaseLayout>
+<ul class='tags-list'>
+  {
+    tags.map((tag) => (
+      <li class='tag-name'>
+        <a href={`/tags/#${tag}`}>#{tag}</a>
+      </li>
+    ))
+  }
+</ul>
 
 <style>
   .tag-name {
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: bold;
     font-family: var(--font-mono);
     font-size: 1em;
   }
@@ -34,7 +28,6 @@ const pageTitle = 'All Tags';
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    justify-content: center;
   }
 
   .tags-list li {
@@ -53,24 +46,24 @@ const pageTitle = 'All Tags';
   }
 
   .tag-name:nth-of-type(7n + 1) a {
-    color: var(--rp-moon-iris);
+    color: var(--red);
   }
   .tag-name:nth-of-type(7n + 2) a {
-    color: var(--rp-text);
+    color: var(--orange);
   }
   .tag-name:nth-of-type(7n + 3) a {
-    color: var(--diva-mecha);
+    color: var(--pink);
   }
   .tag-name:nth-of-type(7n + 4) a {
-    color: var(--menu-accent);
+    color: var(--green);
   }
   .tag-name:nth-of-type(7n + 5) a {
-    color: var(--purple-ink);
+    color: var(--light-blue);
   }
   .tag-name:nth-of-type(7n + 6) a {
-    color: var(--vicious);
+    color: var(--purple);
   }
   .tag-name:nth-of-type(7n + 7) a {
-    color: var(--purple-poodle);
+    color: var(--blue);
   }
 </style>
