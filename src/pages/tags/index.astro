@@ -12,7 +12,7 @@ const pageTitle = 'All Tags';
       {
         tags.map((tag) => (
           <li class='tag-name'>
-            <a href={`/tags/#${tag}`}>#{tag}</a>
+            <a href={`/tags/${tag}`}>#{tag}</a>
           </li>
         ))
       }
@@ -21,13 +21,10 @@ const pageTitle = 'All Tags';
 </BaseLayout>
 
 <style>
-  .tag-name {
-    margin-bottom: 0;
-    font-weight: 400;
-    font-family: var(--font-mono);
-    font-size: 1em;
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
   }
-
   .tags-list {
     list-style: none;
     padding: 0;
@@ -36,7 +33,12 @@ const pageTitle = 'All Tags';
     margin: 0;
     justify-content: center;
   }
-
+  .tag-name {
+    margin-bottom: 0;
+    font-weight: 400;
+    font-family: var(--font-mono);
+    font-size: 1em;
+  }
   .tags-list li {
     margin: 0 1em 0 0;
     font-weight: normal;

@@ -184,23 +184,27 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-weight: 500;
   color: #ac87e9;
-  transition: color .3s;
+  transition: all .3s;
+  
 }
 
 a:is(.dark *) {
   color: #eae2ff;
 }
-
-/* a:hover {
+a:not(:is(:hover, :focus)) {
+  text-decoration-color: color-mix(in srgb, currentColor, transparent 75%);
+}
+a:hover {
   text-decoration-line: underline;
-  text-decoration-style: dashed;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
   text-decoration-color: #955cf1;
-} */
+}
+
 .main-wrapper {
   display: grid;
   width: min(1280px,100%);
@@ -297,10 +301,9 @@ h2 {
   6px 6px 0 var(--space-battle-blue),
   -4px -4px var(--purple-ink);
   transition: all 500ms;
-  
   transform-origin: bottom right;
-
-&:active {
+}
+.nav-links a:active {
   outline-style: dashed;
   outline-offset: 3px;
   outline-width: 2px;
@@ -311,7 +314,6 @@ h2 {
 .nav-links a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
 }
 /* .nav-links a:hover,
 .nav-links a:focus {
@@ -329,9 +331,33 @@ h2 {
   display: block;
   text-decoration: none;
   font-weight: 500;
-  transition: all;
-  transition-duration: 0.3s;
   font-size: 1rem;
+  transition: all 0.4s;
+}
+
+.main-menu a:hover,
+.main-menu a:focus {
+  text-underline-offset: 0.3em;
+  color: #955cf1;
+  filter: saturate(1);
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rp-text);
+}
+/* .main-menu a:focus {
+  text-decoration: none;
+  outline-style: dashed;
+  outline-width: 2px;
+  outline-offset: 0.3em;
+  outline-color: var(--rp-iris);
+} */
+.main-menu a:active {
+  text-decoration: none;
+  outline-style: dashed;
+  outline-offset: 3px;
+  outline-width: 2px;
+  outline-color: var(--rp-iris);
 }
 .main-menu a.active {
   color: var(--rp-moon-iris);
@@ -341,27 +367,6 @@ h2 {
   text-decoration-thickness: 2px;
   text-decoration-color: var(--rp-text);
   text-underline-offset: 3px;
-}
-.main-menu a:hover,
-.main-menu a:focus {
-  transition: all;
-  transition-duration: 0.3s;
-  color: #955cf1;
-  filter: saturate(1);
-  text-decoration-line: underline;
-  text-decoration-style: dashed;
-  text-decoration-thickness: 2px;
-  text-decoration-color: var(--rp-text);
-  text-underline-offset: 2px;
-
-&:active {
-  outline-style: dashed;
-  outline-offset: 3px;
-  outline-width: 1px;
-  outline-color: var(--purple-illusion);
-  transition: all 300ms;
-  transition-duration: .3s;
-}
 }
 
 

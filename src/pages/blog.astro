@@ -12,7 +12,7 @@ const pageTitle = 'Blog - Nelailen';
   <h2>All Posts</h2>
   <ul>
     {
-      allPosts.map((post: any) => (
+      allPosts.map((post) => (
         <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
       ))
     }

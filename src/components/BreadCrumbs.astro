@@ -1,11 +1,25 @@
 ---
 
+interface Props {
+	currentPath: string;
+	currentName?: string | undefined;
+	position: "left" | "main";
+	routes: string[];
+}
+
+
 ---
 
 <div class='breadcrumb-wrapper'>
   <div class='breadcrumb-base'>
+    <ul class="vert-list">
     <span aria-hidden='true' class='font-bold'>.HELLOOOO</span>
-    <div class='breadcrumb-items'></div>
+      
+        <li class="breadcrumb-items">
+          <a href="/">home</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <style>
@@ -24,19 +38,18 @@
     max-width: 4rem;
     width: 3rem;
     flex-direction: column;
-    position: sticky;
     bottom: 0;
     right: 0;
     z-index: 10;
     min-height: 100svh;
     max-height: 100svh;
     align-items: center;
-    overflow-y: auto;
+    
   }
 }
   .breadcrumb-base {
-position: sticky;
-top: 4rem;
+    position: sticky;
+    top: 4rem;
     justify-content: center;
     align-items: center;
     writing-mode: vertical-rl;
@@ -47,19 +60,22 @@ top: 4rem;
     white-space: nowrap;
   }
 
-  .breadcrumb-items {
+  .vert-list {
     display: flex;
+    position: sticky;
+    top: 4rem;
     gap: 1rem;
     margin-top: 0.5rem;
   }
-  p {
+  span {
     display: flex;
     margin-top: 0;
     gap: 0.5rem;
+    position: sticky;
   }
   /* just a test for states, I don't want this in breadcrumbs, but elsewhere */
   .breadcrumb-items a {
-  color: inherit;
+  color: var(--rp-text);
 }
 .breadcrumb-items a:not(:last-child) {
   --font-weight: var(--font-weight-regular);
@@ -75,7 +91,7 @@ top: 4rem;
     text-decoration-style: dashed;
     text-decoration-color: var(--grape);
     text-underline-offset: 0.15em;
-    transition: text-underline-offset 0.4s;
+    transition: all 0.4s;
   }
 
   a:hover {
@@ -90,7 +106,8 @@ top: 4rem;
 
   a:active {
     text-decoration: none;
-    outline: 2px dashed;
-    outline-offset: 0.2em;
+    outline: dashed;
+    outline-width: 2px;
+    outline-offset: 0.3em;
   }
   </style>

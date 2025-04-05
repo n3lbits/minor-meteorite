@@ -8,21 +8,16 @@ export const NAVIGATION: Navigation = [
     name: "me",
     path: "/about",
   },
-    {
-        name: "posts",
-        path: "/blog",
-    },
-    {
-        name: "tags",
-        path: "/tags",
-    },
-    {
-      name: 'etc',
-      path: '/#',
-    },
-    { name: 'projects',
-      path: '/etc/projects'
-
-    },
-
-      ] 
+  {
+    name: "posts",
+    path: "/blog",
+  },
+  {
+    name: "tags",
+    path: "/tags",
+  },
+  {
+    name: 'etc', 
+    path: "/#",
+  },
+]

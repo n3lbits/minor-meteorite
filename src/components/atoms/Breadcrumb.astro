@@ -15,9 +15,9 @@ const { currentPath, href, path, name = path } = Astro.props;
   <span aria-hidden='true'>/</span>
   {
     path === currentPath ? (
-      <span class={'font-bold ${colors.text'}>{name}</span>
+      <span>{name}</span>
     ) : (
-      <Link href={href} class={'font-bold underline'} title={name}>
+      <Link href={href} title={name}>
         {name}
       </Link>
     )

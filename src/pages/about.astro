@@ -1,157 +1,148 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import greetings from '../../src/data/greatings.json';
 
 const pageTitle = 'About Me - Nelailen';
-
-const identity = {
-  firstName: 'Nicole',
-  country: 'USA',
-  occupation: 'Cybersecurity',
-  hobbies: ['photography', 'birdwatching', 'collecting', 'exploring'],
-};
-
-const interests = [
-  'bad weather',
-  'nonograms',
-  'finding old things',
-  'mechanical pencils',
-];
-
-const happy = true;
-const finished = false;
-const goal = 3;
-const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-const { quotation } = Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <section>
     <h1>A bit about me</h1>
-    <h2>...and this site</h2>
   </section>
   <section class='content'>
     <article class='about'>
       <p>
-        I am an entry level cybersecurity professional on a journey to start a
-        new career. My path into cybersecurity has been, let's say, interesting.
-        I come from a non-technical background, having majored in Finance and
-        Economics, and worked in the financial sector for over ten years after
-        university.
+        My career journey, thusfar has been... interesting. I come from a
+        non-technical background, having majored in Finance and Economics, and
+        after ten plus years working in the financial sector I've pivoted into
+        cybersecurity, with a strong interest in incident handling,
+        investigations and hunting.
       </p>
-      <p>
-        Initially wanting to share what I learned, I started keeping write-ups
-        on github, though wanting a space of my own ultimately led to the
-        creation of this site. Now it's here and I hope to share my journey into
-        cybersecurity, and write on about a variety of topics that interest me.
-      </p>
-
       <p>
         I consider myself a perpetual learner. My curious and investigative
         spirit drives me to seek new activities and get to the root of things. I
-        also enjoy collecting hobbies, creating and exploring.
-      </p>
-
-      <p>
-        DISCLAIMER!!! This site is an evolving living space, built on trial and
-        error, curiosity, inspiration and a desire to create something of my
-        own. As I learn to work with CSS and HTML there's no "best practices" or
-        optimization just yet. While I intend to develop some sort of
-        organization with respect to content, I'm still learning, and will
-        continue make adjustments as I go. This is my space to have fun,
-        experiment and play, so glitches, incomplete content and odd features
-        might show up <em>occassionally</em>.
+        also enjoy collecting hobbies, creating and exploring. Mostly, I hope to
+        contribute something of value.
       </p>
     </article>
+    <section class='content'>
+      <article class='intro'>
+        <h3>And about this site:</h3>
+        <p>
+          Initially wanting to share what I learned, I started keeping write-ups
+          on github, though wanting a space of my own ultimately led to the
+          creation of this site. Now it's here and I hope to share my journey
+          into cybersecurity, and write on about a variety of topics that
+          interest me.
+        </p>
+        <p>
+          I am not a developer, nor am I a designer. After spending much time
+          learning the basics, and trashing dozens of projects, I've finally
+          reached a point of moderate acceptance in how it looks, works, and
+          feels.
+        </p>
+        <p>
+          Good enough to start writing in public, yet a dynamic fluid space
+          where I can express myself both professionally and creatively. I'll
+          probably make a legit post on this process, the technical, physical,
+          mental, etc., at some point, but in general, expect to see:
+        </p>
+        <ul>
+          <li>Posts about a variety of things as I have many hobbies.</li>
+          <li>Short-form notes, thoughts and ideas.</li>
+          <li>
+            Occasional write-ups and walk-throughs of CTFs, TryHackMe, and other
+            cybersecurity topics and related activities.
+          </li>
+          <li>Walk-throughs and tutorials of personal projects and works.</li>
+          <li>
+            Evolving designs and "features" that seem out of place and don't fit
+            'standards'.
+          </li>
+          <li>
+            Throwbacks as I reminisce over the old web, where personal websites
+            were common.
+          </li>
+        </ul>
 
-    <section class='deets'>
-      <h3>Here are a few notes about me:</h3>
-      <ul>
-        <li>My name is {identity.firstName}.</li>
-        <li>
-          I live in the {identity.country} and I work in {identity.occupation}.
-        </li>
-        {
-          identity.hobbies.length >= 2 && (
-            <li>
-              My hobbies include: {identity.hobbies[0]}, {identity.hobbies[1]}{' '}
-              and {identity.hobbies[3]}
-            </li>
-          )
-        }
-      </ul>
-      <p><strong>Some of my favorite things include:</strong></p>
-      <ul>
-        {interests.map((interest) => <li class='interest'>{interest}</li>)}
-      </ul>
-
-      {happy && <p>I am happy to be learning Astro!</p>}
-
-      {finished && <p>I finished this tutorial!</p>}
-
-      {
-        goal === 3 ? (
-          <p>My goal is to finish in 3 days.</p>
-        ) : (
-          <p>My goal is not 3 days.</p>
-        )
-      }
-    </section>
-    <section id='quote'>
-      <p id='quotation'>{quotation}</p>
-      <p id='source'></p>
-      <p>{greeting}</p>
+        <p>
+          <strong>DISCLAIMER!!!</strong> This site is an evolving living space, built
+          on trial and error, curiosity, inspiration and a desire to create something
+          of my own. As I learn to work with CSS and HTML there's no "best practices"
+          or optimization just yet. While I intend to develop some sort of organization
+          with respect to content, I'm still learning, and will continue make adjustments
+          as I go. This is my space to have fun, experiment and play, so glitches,
+          incomplete content and odd features might show up <em
+            >occassionally</em
+          >.
+        </p>
+      </article>
     </section>
   </section>
-</BaseLayout>
-<script></script>
-<style>
-  h1 {
-    color: var(--rp-moon-text);
-    font-size: 2.5rem;
-    margin-block: 0;
-  }
+  <style>
+    h1 {
+      color: var(--rp-moon-text);
+      font-size: 2.5rem;
+      margin-block: 0;
+    }
 
-  h2 {
-    color: var(--purple-ink);
-    font-size: 1.5rem;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
-  .about,
-  .deets {
-    outline: dashed;
-    padding-block: 0.5rem;
-    outline-color: var(--moonscape);
-    outline-width: 1px;
-    outline-offset: 5px;
-    padding-block: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  .about p {
-    font-size: 15px;
-    line-height: 1.5;
-    margin-top: 1.25rem;
-  }
-  .deets p {
-    font-size: 15px;
-    line-height: 1.5;
-    margin-top: 1.5rem;
-  }
-  .deets ul {
-    padding-inline: 1rem;
-    margin-bottom: 1rem;
-  }
-  .deets ul li {
-    list-style: none;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-  }
-  .deets ul li::marker {
-    content: '\2023\0020 ';
-    color: var(--rp-moon-iris);
-    font-size: 1.2rem;
-  }
-</style>
+    h2 {
+      color: var(--purple-ink);
+      font-size: 1.5rem;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+    .intro {
+      padding-block: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .intro-sub {
+      margin-bottom: 0.5rem;
+    }
+    .intro p {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+    .intro ul {
+      padding-inline: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .intro ul li {
+      list-style: none;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .intro ul li::marker {
+      content: '\2023\0020 ';
+      font-size: 1.2rem;
+      color: var(--moonscape);
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 5;
+      margin-block: 0.5rem;
+      padding-block: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 0rem;
+      font-size: 1.5rem;
+      padding-bottom: 0.5rem;
+      font-family: 'Anuphan Variable', 'Segoe UI', Tahoma, Geneva, Verdana,
+        sans-serif;
+      color: var(--purple-ink);
+    }
+    .about,
+    .about p {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+  </style>
+</BaseLayout>

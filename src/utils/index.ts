@@ -36,6 +36,5 @@ export const blogFilter = (entry: CollectionEntry<"blog">) => {
 	if (import.meta.env.DEV) {
 		return true;
   }
-
 	return !entry.data.draft;
 }

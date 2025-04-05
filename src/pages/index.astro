@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Preview from '$components/Preview.astro';
+import Note from '../components/Note.astro';
 import { blogFilter } from '$utils';
 import { getCollection } from 'astro:content';
 import { randomArrayEntry } from '$utils';
@@ -10,6 +11,11 @@ const posts = (await getCollection('blog'))
     return b.data.pubDate.getTime() - a.data.pubDate.getTime();
   })
   .filter(blogFilter)
+  .slice(0, 3);
+const notes = (await getCollection('notes'))
+  .sort((a, b) => {
+    return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+  })
   .slice(0, 3);
 const pageTitle = 'Nelailen';
 const greating = randomArrayEntry([
@@ -21,45 +27,49 @@ const greating = randomArrayEntry([
   'Hallo',
   'Hola',
   'Habari',
+  'Wes hāl',
+  'Ahoy',
+  'Saluton',
+  'Salam',
+  'zdravo',
+  'Moni',
+  'Bonghjornu',
+  'Bonjour',
+  'Ola',
+  'Sannu',
+  'Ciao',
+  'salve',
+  'Sawa',
+  'שלום',
+  'Alohaʻoe',
+  'Moien',
+  'Hiha',
+  'Talofa',
 ]);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1>{greating}...</h1>
+  <h1 class='greet'>{greating}...</h1>
   <section>
-    <h2>Hi, Hello and welcome!</h2>
+    <h2>Welcome, internet person.</h2>
     <p class='intro-sub'>
-      Welcome to the personal website of Nelailen, where I do whatever I like...
-      If you'd like to read a little bit about who I am and all, go <a
-        href='/about/'>here</a
+      This is my personal website, where I do whatever I like... If you'd like
+      to read a little bit about who I am and all, go <a href='/about/'>here</a
       >.
     </p>
   </section>
 
-  <section class='content'>
-    <article class='intro'>
-      <h3>About this site:</h3>
-      <p>Here are some things that you can expect to find here:</p>
-      <ul>
-        <li>Changing designs and "features" that seem out of place.</li>
-        <li>
-          Throwbacks as I reminisce over the old web, where personal websites
-          were common.
-        </li>
-        <li>Posts about a variety of things. I am a collector of hobbies.</li>
-        <li>
-          Occasional write-ups and walk-throughs of CTFs, TryHackMe, and others.
-        </li>
-        <li>
-          Walk-throughs and tutorials of personal projects and activities.
-        </li>
-        <li>Kindness.</li>
-      </ul>
-    </article>
-    <section class='list-container'>
-      <h3>Latest blog posts</h3>
-      {posts.map((post) => <Preview post={post} />)}
-    </section>
+  <section class='list-container'>
+    <h3>Recent posts</h3>
+    {posts.map((post) => <Preview post={post} />)}
+  </section>
+  <section class='list-container'>
+    <h3>Latest notes</h3>
+    {
+      notes.map((note) => (
+        <Note url={`/notes/${note.id}/`} title={note.data.title} />
+      ))
+    }
   </section>
 </BaseLayout>
 
@@ -69,10 +79,6 @@ const greating = randomArrayEntry([
     flex-direction: column;
   }
   .intro {
-    outline: dashed;
-    outline-color: var(--moonscape);
-    outline-width: 1px;
-    outline-offset: 5px;
     padding-block: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -82,7 +88,7 @@ const greating = randomArrayEntry([
   .intro p {
     font-size: 15px;
     line-height: 1.5;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
   }
   .intro ul {
     padding-inline: 1rem;
@@ -107,7 +113,15 @@ const greating = randomArrayEntry([
     margin-block: 0.5rem;
     padding-block: 0.5rem;
   }
-
+  h1.greet {
+    font-family: 'Anuphan Variable';
+    font-size: 2.2rem;
+    font-style: italic;
+    text-transform: lowercase;
+    &::before {
+      content: '* ';
+    }
+  }
   h3 {
     margin-top: 0rem;
     font-size: 1.5rem;
