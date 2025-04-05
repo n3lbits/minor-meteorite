@@ -65,11 +65,9 @@ const greating = randomArrayEntry([
   </section>
   <section class='list-container'>
     <h3>Latest notes</h3>
-    {
-      notes.map((note) => (
-        <Note url={`/notes/${note.id}/`} title={note.data.title} />
-      ))
-    }
+    <div class='recent-notes'>
+      {notes.map((note) => <Note post={note} />)}
+    </div>
   </section>
 </BaseLayout>
 
@@ -112,6 +110,9 @@ const greating = randomArrayEntry([
     gap: 5;
     margin-block: 0.5rem;
     padding-block: 0.5rem;
+    list-style: none;
+  }
+  .recent-notes {
   }
   h1.greet {
     font-family: 'Anuphan Variable';

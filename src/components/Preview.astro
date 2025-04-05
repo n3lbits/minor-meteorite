@@ -14,16 +14,9 @@ const { post } = Astro.props;
     <time class='time'>
       <span>{readableDate(post.data.pubDate)}</span>
     </time>
-    <div class='mb-2 text-sm text-creative-work dark:text-dark-subtle-text'>
-      <h4 class='m-0 inline-block text-xl font-medium'>{post.data.title}</h4>
+    <div class="post-data">
+      <h4>{post.data.title}</h4>
 
-      {
-        post.data.draft && (
-          <span class='text-xs font-bold text-black dark:text-white'>
-            Draft
-          </span>
-        )
-      }
       <p class='subtitle'>
         {post.data.description ?? null}
       </p>

@@ -1,5 +1,5 @@
 ---
-
+import Toggle from './Toggle.astro';
 interface Props {
 	currentPath: string;
 	currentName?: string | undefined;
@@ -13,14 +13,20 @@ interface Props {
 <div class='breadcrumb-wrapper'>
   <div class='breadcrumb-base'>
     <ul class="vert-list">
+      <span class='theme-toggle'>
+        <Toggle />
+      </span>
     <span aria-hidden='true' class='font-bold'>.HELLOOOO</span>
+    
       
         <li class="breadcrumb-items">
           <a href="/">home</a>
         </li>
       </ul>
+      
     </div>
   </div>
+  
 </div>
 <style>
   .breadcrumb-wrapper {
@@ -109,5 +115,13 @@ interface Props {
     outline: dashed;
     outline-width: 2px;
     outline-offset: 0.3em;
+  }
+  
+  .theme-toggle {
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: 3rem;
+    align-items: center;
+    justify-items: center;
   }
   </style>

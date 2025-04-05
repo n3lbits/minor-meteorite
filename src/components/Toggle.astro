@@ -1,7 +1,7 @@
-<div id='toggleWrapper'>
+
   <button id='themeToggle' title='Dark / Light View'>
     <div id='darkLightSvgWrap'>
-      <svg width='20px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+      <svg width='18px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
         <path
           class='sun'
           fill-rule='evenodd'
@@ -16,44 +16,26 @@
     </div>
   </button>
   <!-- <div id='darkLightOverlay'></div> -->
-</div>
 <style>
-  #toggleWrapper {
-    display: inline-block;
-    position: relative;
-    user-select: none;
-  }
-  #themeToggle {
+  button#themeToggle {
     cursor: pointer;
     position: relative;
-    display: inline-block;
     fill: #ebd7fd;
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
     transition: all 1s;
-  }
-  
-  #darkLightSvgWrap {
-    height: 24px;
-    width: 24px;
-    overflow: hidden;
-    position: relative;
-    transition: all 0.3s;
-  }
-  #themeToggle:hover #darkLightSvgWrap {
-    transform: scale(1) rotate(-15deg);
-  }
-  #darkLightSvgWrap {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    transition: all 0.5s;
-    top: -10px;
-    right: -5px;
-  }
-  #themeToggle {
     border: 0;
     background: none;
+  }
+  
+  #themeToggle:hover #darkLightSvgWrap {
+    transform: scale(1) rotate(-20deg);
+  }
+  #darkLightSvgWrap {
+    height: 18px;
+    width: 18px;
+    position: relative;
+    transition: all 0.5s;
   }
   .sun {
     fill: black;
@@ -124,6 +106,6 @@
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   };
   document
-    .getElementById('toggleWrapper')
+    .getElementById('themeToggle')
     ?.addEventListener('click', handleToggleClick);
 </script>
